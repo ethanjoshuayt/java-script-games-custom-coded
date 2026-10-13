@@ -11,5 +11,12 @@ let winningPattern = [
 boxes.forEach((box)=>{
         box.addEventListener("click", ()=>{
             console.log("sup");
+            if (turnO){
+              box.innerHTML="O";
+              turnO=!turnO;
+            } else{
+              box.innerHTML="X";
+              turnO=true;
+            }
         });
 });
