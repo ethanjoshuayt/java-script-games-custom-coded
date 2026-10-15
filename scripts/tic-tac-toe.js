@@ -1,6 +1,7 @@
 let boxes = document.querySelectorAll(".cell");
 let resetBtn = document.querySelector(".restart");
 
+
 let turnO = true;
 let winningPattern = [
   [0, 1, 2], [3, 4, 5], [6, 7, 8],   
@@ -9,8 +10,7 @@ let winningPattern = [
 ];
 
 boxes.forEach((box)=>{
-        box.addEventListener("click", ()=>{
-            console.log("sup");
+        box.addEventListener("click", ()=>{            
             if (turnO){
               box.innerHTML="O";
               turnO=!turnO;
@@ -18,5 +18,35 @@ boxes.forEach((box)=>{
               box.innerHTML="X";
               turnO=true;
             }
+            box.disabled=true;
+            checkWinner();
+
         });
 });
+
+
+const showWinner= (winner)=>{
+      document.querySelector('.winner').innerHTML= `congratulation the winner is ${winner}`;
+
+}
+
+const checkWinner = ()=>{
+        for (pattern of winningPattern){
+          let pos1 = boxes[pattern[0]].innerHTML;
+          let pos2 = boxes[pattern[1]].innerHTML;
+          let pos3 = boxes[pattern[2]].innerHTML;
+
+           if(pos1 != "" && pos2 != "" && pos3 !=""){
+            if(pos1===pos2 && pos3===pos1){
+              
+              showWinner(pos1);
+        };
+           }
+
+       
+        }
+};
+
+
+
+
