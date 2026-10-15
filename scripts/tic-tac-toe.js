@@ -1,6 +1,8 @@
 let boxes = document.querySelectorAll(".cell");
 let resetBtn = document.querySelector(".restart");
 
+let scoreO = document.querySelector('.scoreo')
+
 
 let turnO = true;
 let winningPattern = [
@@ -66,4 +68,4 @@ const newGame = ()=>{
 
 };
 
-resetBtn.addEventListener('click',newGame)
+resetBtn.addEventListener('click',newGame);
