@@ -26,6 +26,8 @@ boxes.forEach((box)=>{
 
 
 const showWinner= (winner)=>{
+      gamedisable();
+
       document.querySelector('.winner').innerHTML= `congratulation the winner is ${winner}`;
 
 }
@@ -47,6 +49,21 @@ const checkWinner = ()=>{
         }
 };
 
+const gamedisable = ()=>{
+  for(box of boxes){
+    box.disabled = true;
+  }
+};
+
+const newGame = ()=>{
+          for(box of boxes)
+            {box.innerHTML='';
+             box.disabled=false;
+          };
+          
+          document.querySelector('.winner').innerHTML='';
 
 
+};
 
+resetBtn.addEventListener('click',newGame)
