@@ -68,6 +68,8 @@ const newGame = ()=>{
             {box.innerHTML='';
              box.disabled=false;
           };
+
+          turnO= true;
           
           document.querySelector('.winner').innerHTML='';
 
