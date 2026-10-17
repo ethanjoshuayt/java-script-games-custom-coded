@@ -23,6 +23,8 @@ boxes.forEach((box)=>{
             box.disabled=true;
             checkWinner();
 
+            autoNewgame();
+
         });
 });
 
@@ -49,7 +51,8 @@ const checkWinner = ()=>{
 
            if(pos1 != "" && pos2 != "" && pos3 !=""){
             if(pos1===pos2 && pos3===pos1){            
-              showWinner(pos1); };
+              showWinner(pos1); 
+              setTimeout(newGame,3000)};
            } }
 };
 
@@ -92,8 +95,21 @@ const scoreBoard = (banan)=>{
   else{
     xpoints += 1
   }
-    
 
-  
+};
+
+const autoNewgame = ()=>{
+  let allFilled = true;
+
+  for (box of boxes) {
+    if (box.innerHTML == ''){
+        allFilled = false;
+        
+    }
+  }
+
+  if (allFilled === true){
+  setTimeout(newGame,3000)
+}
 };
 
