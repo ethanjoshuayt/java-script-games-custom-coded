@@ -1,8 +1,8 @@
 let boxes = document.querySelectorAll(".cell");
 let resetBtn = document.querySelector(".restart");
 
-let scoreO = document.querySelector('.scoreo')
-
+let scorex = document.querySelector("#score-x");
+let scoreo = document.querySelector("#score-o");
 
 let turnO = true;
 let winningPattern = [
@@ -27,12 +27,19 @@ boxes.forEach((box)=>{
 });
 
 
-const showWinner= (winner)=>{
+const showWinner= (banana)=>{
       gamedisable();
 
-      document.querySelector('.winner').innerHTML= `congratulation the winner is ${winner}`;
+      document.querySelector('.winner').innerHTML= `congratulation the winner is ${banana}`;
 
+     scoreBoard(banana);
+     scoreo.innerHTML = opoints;
+     scorex.innerHTML = xpoints;
 }
+
+
+
+
 
 const checkWinner = ()=>{
         for (pattern of winningPattern){
@@ -41,21 +48,20 @@ const checkWinner = ()=>{
           let pos3 = boxes[pattern[2]].innerHTML;
 
            if(pos1 != "" && pos2 != "" && pos3 !=""){
-            if(pos1===pos2 && pos3===pos1){
-              
-              showWinner(pos1);
-        };
-           }
-
-       
-        }
+            if(pos1===pos2 && pos3===pos1){            
+              showWinner(pos1); };
+           } }
 };
+
+
 
 const gamedisable = ()=>{
   for(box of boxes){
     box.disabled = true;
   }
 };
+
+
 
 const newGame = ()=>{
           for(box of boxes)
@@ -69,3 +75,23 @@ const newGame = ()=>{
 };
 
 resetBtn.addEventListener('click',newGame);
+
+let xpoints = 0;
+let opoints = 0;
+
+scoreo.innerHTML = opoints;
+scorex.innerHTML = xpoints;
+
+
+const scoreBoard = (banan)=>{
+  if (banan === 'O'){
+    opoints += 1
+  }
+  else{
+    xpoints += 1
+  }
+    
+
+  
+};
+
